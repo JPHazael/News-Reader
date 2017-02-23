@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21D4F431EBEBE526D368A733 /* Pods_NewsReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D735D3A42D81C611E67D028 /* Pods_NewsReader.framework */; };
 		84DA71C31E5F35F500EB79AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA71C21E5F35F500EB79AB /* AppDelegate.swift */; };
 		84DA71C51E5F35F500EB79AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA71C41E5F35F500EB79AB /* ViewController.swift */; };
 		84DA71C81E5F35F500EB79AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DA71C61E5F35F500EB79AB /* Main.storyboard */; };
@@ -15,9 +16,11 @@
 		84DA71D51E5F421E00EB79AB /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA71D41E5F421E00EB79AB /* ArticleTableViewCell.swift */; };
 		84DA71D71E5F431F00EB79AB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA71D61E5F431F00EB79AB /* Article.swift */; };
 		84DA71D91E5F535700EB79AB /* Networking Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DA71D81E5F535700EB79AB /* Networking Client.swift */; };
+		84DA71DB1E5F650700EB79AB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DA71DA1E5F650700EB79AB /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2AD9275E6F990BD35652A3F4 /* Pods-NewsReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader.debug.xcconfig"; sourceTree = "<group>"; };
 		84DA71BF1E5F35F500EB79AB /* NewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DA71C21E5F35F500EB79AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84DA71C41E5F35F500EB79AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +31,9 @@
 		84DA71D41E5F421E00EB79AB /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		84DA71D61E5F431F00EB79AB /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		84DA71D81E5F535700EB79AB /* Networking Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Networking Client.swift"; sourceTree = "<group>"; };
+		84DA71DA1E5F650700EB79AB /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/NewsReader-asmixcpxtzfcglbfbdggrdzrvkgn/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		9D735D3A42D81C611E67D028 /* Pods_NewsReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7F05BC5BC209CD7ED44B7F5 /* Pods-NewsReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DA71DB1E5F650700EB79AB /* Alamofire.framework in Frameworks */,
+				21D4F431EBEBE526D368A733 /* Pods_NewsReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E830FECA83599BD0978A734 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2AD9275E6F990BD35652A3F4 /* Pods-NewsReader.debug.xcconfig */,
+				B7F05BC5BC209CD7ED44B7F5 /* Pods-NewsReader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B04216651BD5CD3C541895A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84DA71DA1E5F650700EB79AB /* Alamofire.framework */,
+				9D735D3A42D81C611E67D028 /* Pods_NewsReader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84DA71B61E5F35F500EB79AB = {
 			isa = PBXGroup;
 			children = (
 				84DA71C11E5F35F500EB79AB /* NewsReader */,
 				84DA71C01E5F35F500EB79AB /* Products */,
+				4E830FECA83599BD0978A734 /* Pods */,
+				7B04216651BD5CD3C541895A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,9 +108,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84DA71D11E5F35F500EB79AB /* Build configuration list for PBXNativeTarget "NewsReader" */;
 			buildPhases = (
+				04B6AB0FC1660BBAED2C090D /* [CP] Check Pods Manifest.lock */,
 				84DA71BB1E5F35F500EB79AB /* Sources */,
 				84DA71BC1E5F35F500EB79AB /* Frameworks */,
 				84DA71BD1E5F35F500EB79AB /* Resources */,
+				C0283216D9B90749FE14D24D /* [CP] Embed Pods Frameworks */,
+				C920D60186CE416AF423F9A7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04B6AB0FC1660BBAED2C090D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0283216D9B90749FE14D24D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C920D60186CE416AF423F9A7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84DA71BB1E5F35F500EB79AB /* Sources */ = {
@@ -271,6 +350,7 @@
 		};
 		84DA71D21E5F35F500EB79AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AD9275E6F990BD35652A3F4 /* Pods-NewsReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XS5FRJH7AZ;
@@ -284,6 +364,7 @@
 		};
 		84DA71D31E5F35F500EB79AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7F05BC5BC209CD7ED44B7F5 /* Pods-NewsReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XS5FRJH7AZ;
@@ -314,6 +395,7 @@
 				84DA71D31E5F35F500EB79AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
