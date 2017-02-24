@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.articlesArray?.count)!
+        return (self.articlesArray?.count) ?? 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,11 +45,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell?.authorLabel.text = articlesArray?[indexPath.row].author
         cell?.titleLabel.text  = articlesArray?[indexPath.row].headline
         cell?.descriptionLabel.text = articlesArray?[indexPath.row].desc
-        
-        
+        cell?.previewImageView.imageFromUrl(urlString: (articlesArray?[indexPath.row].imageURL)!)
         return cell!
     }
-    
-
 }
 
+extension UIImageView{
+    
+        public func imageFromUrl(urlString: String) {
+            
+            let urlRequest = URLRequest(url: URL(string: urlString)!)
+            let task = URLSession.shared.dataTask(with: urlRequest){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                DispatchQueue.main.async {
+                self.image = UIImage(data: data!)
+                }
+            }
+      task.resume()
+    }
+
+}
