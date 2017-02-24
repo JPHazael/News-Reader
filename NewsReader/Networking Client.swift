@@ -9,12 +9,12 @@
 import Foundation
 import Alamofire
 
-struct NetworkingClient{
+class NetworkingClient: NSObject{
     
     static let sharedInstance = NetworkingClient()
     
     //var data:[[String: AnyObject]] = [[String: AnyObject]]()
-    //var articlesArray:[Article]? = []
+    var articlesArray:[Article]? = []
     
     let key = "0201d022142c4483b285a711a61fd490"
     
@@ -34,24 +34,22 @@ struct NetworkingClient{
                 
                 if let articlesFromData = data["articles"] as? [[String: AnyObject]]{
                    // print(articlesFromData)
-                    var articlesArray:[Article]? = []
+                    self.articlesArray = [Article]()
 
                     for articleFromData in articlesFromData {
                         let article = Article()
+                        print(articleFromData)
+
                         
-                    if let headline = articleFromData["title"] as? String, let author = articleFromData["author"] as? String, let desc = articleFromData["description"] as? String, let articleURL = articleFromData["URL"] as? String, let imageURL = articleFromData["urltoimage"] as? String{
+                            article.author = articleFromData["author"]! as? String
+                            article.headline = articleFromData["title"]! as? String
+                            article.desc = articleFromData["description"]! as? String
+                            article.URL = articleFromData["url"]! as? String
+                            article.imageURL = articleFromData["urlToImage"]! as? String
                         
                         
-                            article.author = author
-                            article.headline = headline
-                            article.desc = desc
-                            article.URL = articleURL
-                            article.imageURL = imageURL
-                        
-                        }
-                    articlesArray?.append(article)
-                   // print(articlesArray)
-                    completion(articlesArray!)
+                    self.articlesArray?.append(article)
+                    completion(self.articlesArray!)
                     }
                     
                 }

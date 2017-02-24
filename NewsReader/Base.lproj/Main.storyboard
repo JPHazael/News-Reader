@@ -48,14 +48,6 @@
                                                         <constraint firstAttribute="width" constant="125" id="9Om-P2-RSx"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local dog &quot;A very good boy.&quot; Says owner." textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLJ-jc-e7j">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="57" id="08P-q9-WaZ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bosco, a three year-old Burnese Montain Dog, was complemented on his temperment today." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfF-en-jm8">
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -63,10 +55,18 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kilgore Trout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5c-of-0nh">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="132" id="oLW-yF-lpr"/>
+                                                        <constraint firstAttribute="width" constant="226" id="oLW-yF-lpr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local dog &quot;A very good boy.&quot; Says owner." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLJ-jc-e7j">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="93" id="08P-q9-WaZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -74,9 +74,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="dLJ-jc-e7j" secondAttribute="trailing" constant="6" id="3xf-L1-L8Y"/>
                                                 <constraint firstItem="dLJ-jc-e7j" firstAttribute="leading" secondItem="Yoa-V8-loI" secondAttribute="trailing" constant="8" symbolic="YES" id="4ar-Us-TUg"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Yoa-V8-loI" secondAttribute="bottom" constant="20" id="Eth-sn-d4r"/>
-                                                <constraint firstItem="jfF-en-jm8" firstAttribute="top" secondItem="dLJ-jc-e7j" secondAttribute="bottom" constant="12" id="I6K-cQ-MHf"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="C5c-of-0nh" secondAttribute="bottom" constant="-9" id="LVJ-lq-a2c"/>
-                                                <constraint firstItem="Yoa-V8-loI" firstAttribute="top" secondItem="dLJ-jc-e7j" secondAttribute="top" id="Mil-HW-Lmo"/>
+                                                <constraint firstItem="jfF-en-jm8" firstAttribute="top" secondItem="dLJ-jc-e7j" secondAttribute="bottom" constant="-9" id="I6K-cQ-MHf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="C5c-of-0nh" secondAttribute="bottom" constant="-10" id="LVJ-lq-a2c"/>
+                                                <constraint firstItem="Yoa-V8-loI" firstAttribute="top" secondItem="dLJ-jc-e7j" secondAttribute="top" constant="15" id="Mil-HW-Lmo"/>
                                                 <constraint firstItem="C5c-of-0nh" firstAttribute="top" secondItem="jfF-en-jm8" secondAttribute="bottom" constant="8" symbolic="YES" id="Sde-Ia-dpO"/>
                                                 <constraint firstItem="dLJ-jc-e7j" firstAttribute="leading" secondItem="jfF-en-jm8" secondAttribute="leading" id="UQ1-n9-ef9"/>
                                                 <constraint firstItem="jfF-en-jm8" firstAttribute="trailing" secondItem="C5c-of-0nh" secondAttribute="trailing" id="ch8-cC-MZD"/>

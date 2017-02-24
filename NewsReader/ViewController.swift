@@ -23,8 +23,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NetworkingClient.sharedInstance.fetchArticles(url: NetworkingClient.sharedInstance.espnURL, completion:{ (data) in
         
             self.articlesArray = data
-            //print(self.articlesArray)
+            DispatchQueue.main.async {
             self.tableView.reloadData()
+            }
         })
     }
    
@@ -42,6 +43,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleTableViewCell!
         
         cell?.authorLabel.text = articlesArray?[indexPath.row].author
+        cell?.titleLabel.text  = articlesArray?[indexPath.row].headline
+        cell?.descriptionLabel.text = articlesArray?[indexPath.row].desc
+        
         
         return cell!
     }
