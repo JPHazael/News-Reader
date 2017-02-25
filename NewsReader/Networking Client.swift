@@ -33,7 +33,6 @@ class NetworkingClient: NSObject{
                 
                 
                 if let articlesFromData = data["articles"] as? [[String: AnyObject]]{
-                   // print(articlesFromData)
                     self.articlesArray = [Article]()
 
                     for articleFromData in articlesFromData {
