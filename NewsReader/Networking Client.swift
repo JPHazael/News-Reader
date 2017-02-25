@@ -19,6 +19,7 @@ class NetworkingClient: NSObject{
     let key = "0201d022142c4483b285a711a61fd490"
     
     let espnURL:URL = URL(string: "https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=0201d022142c4483b285a711a61fd490")!
+    let tsURL = URL(string: "https://newsapi.org/v1/articles?source=talksport&sortBy=top&apiKey=0201d022142c4483b285a711a61fd490")!
     
     
     func fetchArticles(url: URL, completion: @escaping([Article]) -> Void){

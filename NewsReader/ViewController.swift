@@ -12,8 +12,8 @@ import HMSegmentedControl
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var espnData = [String: AnyObject]()
-    var articlesArray:[Article]? = []
+    var ESPNarticlesArray:[Article]? = []
+    var TSarticlesArray:[Article]? = []
     var segmentedControl: HMSegmentedControl!
 
     @IBOutlet weak var tableView: UITableView!
@@ -25,11 +25,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         NetworkingClient.sharedInstance.fetchArticles(url: NetworkingClient.sharedInstance.espnURL, completion:{ (data) in
         
-            self.articlesArray = data
+            self.ESPNarticlesArray = data
             DispatchQueue.main.async {
             self.tableView.reloadData()
             }
         })
+        
+        
+        NetworkingClient.sharedInstance.fetchArticles(url: NetworkingClient.sharedInstance.tsURL) { (data) in
+            self.TSarticlesArray = data
+            
+        }
+        
+        
     }
     
     
@@ -37,13 +45,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         segmentedControl = HMSegmentedControl(frame: CGRect(x: 0, y: 70, width: self.view.frame.size.width, height: 60))
-        segmentedControl.sectionTitles = ["ESPN", "Posts"]
+        segmentedControl.sectionTitles = ["ESPN", "TalkSport"]
         
         segmentedControl.backgroundColor = .white
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectionIndicatorLocation = .up
         segmentedControl.selectionStyle = .fullWidthStripe
-        segmentedControl.selectionIndicatorColor = UIColor.lightGray
+        segmentedControl.selectionIndicatorColor = UIColor.darkGray
         segmentedControl.selectedSegmentIndex = 0
         
         segmentedControl.titleTextAttributes = [
@@ -67,14 +75,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.rowHeight = UITableViewAutomaticDimension
         } else{
             self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
-            tableView.tableHeaderView?.isHidden = true
+            tableView.reloadData()
         }
     }
    
     // MARK: TABLE VIEW DELEGATE
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.articlesArray?.count ?? 0
+        if segmentedControl.selectedSegmentIndex == 0{
+        return self.ESPNarticlesArray?.count ?? 0
+        } else{
+            return self.TSarticlesArray?.count ?? 0
+            tableView.reloadData()
+        }
+        
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,15 +100,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segmentedControl.selectedSegmentIndex == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleTableViewCell
         
-        cell.authorLabel.text = articlesArray?[indexPath.row].author
-        cell.titleLabel.text  = articlesArray?[indexPath.row].headline
-        cell.descriptionLabel.text = articlesArray?[indexPath.row].desc
-        if articlesArray?[indexPath.row].imageURL != nil {
-        cell.previewImageView.imageFromUrl(urlString: (articlesArray?[indexPath.row].imageURL!)!)
+        cell.authorLabel.text = ESPNarticlesArray?[indexPath.row].author
+        cell.titleLabel.text  = ESPNarticlesArray?[indexPath.row].headline
+        cell.descriptionLabel.text = ESPNarticlesArray?[indexPath.row].desc
+        if ESPNarticlesArray?[indexPath.row].imageURL != nil {
+        cell.previewImageView.imageFromUrl(urlString: (ESPNarticlesArray?[indexPath.row].imageURL!)!)
         }
         return cell
         } else{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleTableViewCell
+            
+            cell.authorLabel.text = TSarticlesArray?[indexPath.row].author
+            cell.titleLabel.text  = TSarticlesArray?[indexPath.row].headline
+            cell.descriptionLabel.text = TSarticlesArray?[indexPath.row].desc
+            if TSarticlesArray?[indexPath.row].imageURL != nil {
+                cell.previewImageView.imageFromUrl(urlString: (TSarticlesArray?[indexPath.row].imageURL!)!)
+            }
+            
             return cell
         }
     }
