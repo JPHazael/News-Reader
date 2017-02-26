@@ -12,6 +12,12 @@ class WebViewController: UIViewController {
     
     
     var articleURL: String?
+    
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
+    }
 
     @IBOutlet weak var webView: UIWebView!
     
