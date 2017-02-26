@@ -44,14 +44,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func setupSegmentedControl(){
         
         
-        segmentedControl = HMSegmentedControl(frame: CGRect(x: 0, y: 70, width: self.view.frame.size.width, height: 60))
+        segmentedControl = HMSegmentedControl(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 70))
         segmentedControl.sectionTitles = ["ESPN", "TalkSport"]
         
         segmentedControl.backgroundColor = .white
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectionIndicatorLocation = .up
         segmentedControl.selectionStyle = .fullWidthStripe
-        segmentedControl.selectionIndicatorColor = UIColor.darkGray
+        segmentedControl.selectionIndicatorColor = UIColor.lightGray
         segmentedControl.selectedSegmentIndex = 0
         
         segmentedControl.titleTextAttributes = [
@@ -73,9 +73,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func segementedControlAction(){
         if segmentedControl?.selectedSegmentIndex == 0{
             self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.reloadData()
         } else{
             self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
-            tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
    
@@ -86,7 +87,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return self.ESPNarticlesArray?.count ?? 0
         } else{
             return self.TSarticlesArray?.count ?? 0
-            tableView.reloadData()
         }
         
         
@@ -123,6 +123,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "web") as! WebViewController
+
+            vc.articleURL = self.ESPNarticlesArray?[indexPath.row].URL
+
+        if segmentedControl.selectedSegmentIndex == 1{
+         if TSarticlesArray?[indexPath.row].URL != nil {
+            
+            vc.articleURL = self.TSarticlesArray?[indexPath.row].URL
+            }
+        }
+        self.present(vc, animated: true, completion: nil)
     }
     
 }

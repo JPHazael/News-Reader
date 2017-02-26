@@ -38,7 +38,6 @@ class NetworkingClient: NSObject{
 
                     for articleFromData in articlesFromData {
                         let article = Article()
-                        print(articleFromData)
 
                         
                             article.author = articleFromData["author"]! as? String
