@@ -161,7 +161,7 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="3yJ-Rm-nKG">
                                             <color key="tintColor" red="0.42916253999999998" green="0.60467019749999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="TWc-hB-U79"/>
+                                                <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="TWc-hB-U79"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -299,6 +299,6 @@
         <image name="bernese_mountaindog" width="2000" height="2000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cEU-6i-MFf"/>
+        <segue reference="TWc-hB-U79"/>
     </inferredMetricsTieBreakers>
 </document>

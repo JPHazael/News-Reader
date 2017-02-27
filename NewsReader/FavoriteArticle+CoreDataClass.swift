@@ -13,16 +13,20 @@ import CoreData
 public class FavoriteArticle: NSManagedObject {
     
     
-    convenience init(articleURL: String, context: NSManagedObjectContext) {
+    convenience init(articleURL: String, author: String, desc: String, imageURL: String, headline: String, context: NSManagedObjectContext) {
         
         //Core Data
         if let entity = NSEntityDescription.entity(forEntityName: "FavoriteArticle", in: context){
             self.init(entity: entity, insertInto: context)
+            self.articleURL = articleURL
+            self.author = author
+            self.desc = desc
+            self.imageURL = imageURL
+            self.headline = headline
+            
         } else {
             fatalError("Unable to find entity name!")
         }
     }
-    
-    
 
 }

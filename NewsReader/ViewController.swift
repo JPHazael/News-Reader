@@ -159,8 +159,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let saveAction =  UITableViewRowAction(style: .default, title: "Add to Favorites?") { (action, indexPath) in
+        let saveAction =  UITableViewRowAction(style: .default, title: "Tap to add to Favorites") { (action, indexPath) in
             print("Article added to favorites!")
+            
+          let newFavoriteArticle = FavoriteArticle(articleURL: (self.ESPNarticlesArray?[indexPath.row].URL)!, author: (self.ESPNarticlesArray?[indexPath.row].author)!, desc: (self.ESPNarticlesArray?[indexPath.row].desc)!, imageURL: (self.ESPNarticlesArray?[indexPath.row].imageURL)!, headline: (self.ESPNarticlesArray?[indexPath.row].headline)!, context: self.articleContext)
+            
+            do{
+                try self.delegate.stack.saveContext()
+                print("Saved Article!")
+            }catch{
+                print("There was an error while saving context")
+            }
             
         }
         saveAction.backgroundColor = #colorLiteral(red: 0.42916254, green: 0.6046701975, blue: 1, alpha: 1)
