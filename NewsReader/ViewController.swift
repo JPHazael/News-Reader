@@ -8,6 +8,7 @@
 
 import UIKit
 import HMSegmentedControl
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -22,6 +23,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         get {
             return true
         }
+    }
+    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    var articleContext: NSManagedObjectContext {
+        return delegate.stack.context
     }
     
     override func viewDidLoad() {
@@ -149,6 +155,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let saveAction =  UITableViewRowAction(style: .default, title: "Add to Favorites?") { (action, indexPath) in
+            print("Article added to favorites!")
+            
+        }
+        saveAction.backgroundColor = #colorLiteral(red: 0.42916254, green: 0.6046701975, blue: 1, alpha: 1)
+        return[saveAction]
     }
     
 }

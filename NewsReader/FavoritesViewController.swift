@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoritesViewController: UIViewController {
+    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    var articleContext: NSManagedObjectContext {
+        return delegate.stack.context
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

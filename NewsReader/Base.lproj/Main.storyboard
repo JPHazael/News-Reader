@@ -194,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="117.39130434782609"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="Mzz-uU-Ewl">
             <objects>
-                <viewController id="pPp-ip-qYR" sceneMemberID="viewController">
+                <viewController id="pPp-ip-qYR" customClass="FavoritesViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NK6-kX-FRm"/>
                         <viewControllerLayoutGuide type="bottom" id="G0q-OE-YU7"/>
@@ -272,6 +272,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pPp-ip-qYR" id="o8K-cO-VP8"/>
+                                    <outlet property="delegate" destination="pPp-ip-qYR" id="cl6-5q-G4w"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
