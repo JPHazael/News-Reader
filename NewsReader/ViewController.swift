@@ -108,6 +108,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if segmentedControl.selectedSegmentIndex == 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleTableViewCell
+            
+
         
         cell.authorLabel.text = ESPNarticlesArray?[indexPath.row].author
         cell.titleLabel.text  = ESPNarticlesArray?[indexPath.row].headline
@@ -150,6 +152,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 }
+
+
+extension String{
+    func fixESPNTag()-> String{
+        var newWord = self
+        newWord = newWord.replacingOccurrences(of: "ESPN", with: " ESPN")
+        
+        return newWord
+    }
+}
+
 
 extension UIImageView{
     
