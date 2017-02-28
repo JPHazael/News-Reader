@@ -162,7 +162,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let saveAction =  UITableViewRowAction(style: .default, title: "Tap to add to Favorites") { (action, indexPath) in
             print("Article added to favorites!")
             
-          let newFavoriteArticle = FavoriteArticle(articleURL: (self.ESPNarticlesArray?[indexPath.row].URL)!, author: (self.ESPNarticlesArray?[indexPath.row].author)!, desc: (self.ESPNarticlesArray?[indexPath.row].desc)!, imageURL: (self.ESPNarticlesArray?[indexPath.row].imageURL)!, headline: (self.ESPNarticlesArray?[indexPath.row].headline)!, context: self.articleContext)
+            let newFavoriteArticle = FavoriteArticle(articleURL: (self.ESPNarticlesArray?[indexPath.row].URL)!, author: (self.ESPNarticlesArray?[indexPath.row].author), desc: (self.ESPNarticlesArray?[indexPath.row].desc)!, imageURL: (self.ESPNarticlesArray?[indexPath.row].imageURL)!, headline: (self.ESPNarticlesArray?[indexPath.row].headline)!, context: self.articleContext)
             
             do{
                 try self.delegate.stack.saveContext()

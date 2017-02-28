@@ -12,8 +12,8 @@ import CoreData
 
 public class FavoriteArticle: NSManagedObject {
     
-    
-    convenience init(articleURL: String, author: String, desc: String, imageURL: String, headline: String, context: NSManagedObjectContext) {
+//author: String, desc: String, imageURL: String, headline: String
+    convenience init(articleURL: String, author: String?, desc: String, imageURL: String, headline: String, context: NSManagedObjectContext) {
         
         //Core Data
         if let entity = NSEntityDescription.entity(forEntityName: "FavoriteArticle", in: context){
