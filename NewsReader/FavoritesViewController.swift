@@ -55,12 +55,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if let fc = fetchedResultsController {
+            return fc.sections![section].numberOfObjects
+        } else {
+            return 0
+        }
         
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if let fc = fetchedResultsController {
+            return (fc.sections?.count)!
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,6 +80,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.authorLabel.text = article.author
         cell.descriptionLabel.text = article.desc
         cell.titleLabel.text = article.headline
+        
+        cell.previewImageView.imageFromUrl(urlString: article.imageURL!)
 
             return cell
   
