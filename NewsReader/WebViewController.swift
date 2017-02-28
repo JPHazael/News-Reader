@@ -20,9 +20,12 @@ class WebViewController: UIViewController {
     }
 
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet var navBar: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         print(self.articleURL)
         //self.webView.loadRequest(URLRequest(url:URL(string: "https://www.youtube.com/watch?v=C7gCKUb8LDM")!))

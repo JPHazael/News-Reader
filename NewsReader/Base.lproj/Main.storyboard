@@ -18,31 +18,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="cEU-6i-MFf"/>
-                        <segue destination="CDv-7g-7Jz" kind="relationship" relationship="viewControllers" id="Asa-M0-F29"/>
+                        <segue destination="pPp-ip-qYR" kind="relationship" relationship="viewControllers" id="rqA-Ci-bVL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXe-Gs-fgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-682" y="422"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="hbd-wF-TIM">
-            <objects>
-                <viewController id="CDv-7g-7Jz" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7M3-B9-Awf"/>
-                        <viewControllerLayoutGuide type="bottom" id="vcW-vX-fa7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PJB-QE-xw3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.50196078430000002" green="0.34901960780000002" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="FWE-bL-eQo"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1qR-8z-OI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="215" y="878"/>
         </scene>
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
@@ -63,7 +44,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" rowHeight="189" id="b0a-is-0US" customClass="ArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="189"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b0a-is-0US" id="yu0-hL-BfI">
                                             <frame key="frameInset" width="375" height="188"/>
@@ -187,6 +168,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="navBar" destination="r7h-B9-8ZM" id="uzC-p4-AKt"/>
                         <outlet property="webView" destination="wVJ-uf-JQe" id="H9X-Me-LP1"/>
                     </connections>
                 </viewController>
@@ -194,7 +176,7 @@
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="117.39130434782609"/>
         </scene>
-        <!--Favorites View Controller-->
+        <!--Item-->
         <scene sceneID="Mzz-uU-Ewl">
             <objects>
                 <viewController id="pPp-ip-qYR" customClass="FavoritesViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -289,10 +271,14 @@
                             <constraint firstAttribute="trailing" secondItem="b6Z-pY-c6P" secondAttribute="trailing" id="uLA-fE-qY3"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="VfJ-N6-OPz"/>
+                    <connections>
+                        <outlet property="tableView" destination="Bbb-pk-JNv" id="GQY-5Y-BFd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXE-z5-bIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1584.8" y="668.81559220389806"/>
+            <point key="canvasLocation" x="158" y="830"/>
         </scene>
     </scenes>
     <resources>
