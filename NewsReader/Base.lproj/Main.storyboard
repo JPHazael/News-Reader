@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-682" y="422"/>
         </scene>
-        <!--Item-->
+        <!--Sports Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" rowHeight="189" id="b0a-is-0US" customClass="ArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="189"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b0a-is-0US" id="yu0-hL-BfI">
                                             <frame key="frameInset" width="375" height="188"/>
@@ -107,14 +107,13 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.560030417" green="0.85606950140000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="maL-ma-FXr" secondAttribute="trailing" id="6Rx-r9-K36"/>
                             <constraint firstItem="maL-ma-FXr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LgT-50-A63"/>
                             <constraint firstItem="maL-ma-FXr" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Z35-yo-yyT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="x2x-1v-Eb0"/>
+                    <tabBarItem key="tabBarItem" title="Sports Page" image="Referee Jersey_000000_32" selectedImage="Referee Jersey_000000_32" id="x2x-1v-Eb0"/>
                     <navigationItem key="navigationItem" id="SSc-gL-lKl"/>
                     <connections>
                         <outlet property="tableView" destination="maL-ma-FXr" id="a2c-Se-Ac1"/>
@@ -142,7 +141,7 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="3yJ-Rm-nKG">
                                             <color key="tintColor" red="0.42916253999999998" green="0.60467019749999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="TWc-hB-U79"/>
+                                                <segue destination="sNB-Yn-UgT" kind="presentation" id="g11-uB-acQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -176,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="117.39130434782609"/>
         </scene>
-        <!--Item-->
+        <!--Favorites-->
         <scene sceneID="Mzz-uU-Ewl">
             <objects>
                 <viewController id="pPp-ip-qYR" customClass="FavoritesViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -260,31 +259,30 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="b6Z-pY-c6P" firstAttribute="leading" secondItem="RzG-id-lV9" secondAttribute="leading" id="D63-JX-BLg"/>
                             <constraint firstItem="b6Z-pY-c6P" firstAttribute="trailing" secondItem="Bbb-pk-JNv" secondAttribute="trailing" id="ReQ-GR-qB4"/>
-                            <constraint firstItem="Bbb-pk-JNv" firstAttribute="top" secondItem="b6Z-pY-c6P" secondAttribute="bottom" id="VI4-1M-kNr"/>
+                            <constraint firstItem="Bbb-pk-JNv" firstAttribute="top" secondItem="b6Z-pY-c6P" secondAttribute="bottom" constant="28" id="VI4-1M-kNr"/>
                             <constraint firstItem="b6Z-pY-c6P" firstAttribute="leading" secondItem="Bbb-pk-JNv" secondAttribute="leading" id="eMc-IR-yFM"/>
                             <constraint firstItem="b6Z-pY-c6P" firstAttribute="top" secondItem="RzG-id-lV9" secondAttribute="top" id="pi6-IQ-aOe"/>
                             <constraint firstItem="Bbb-pk-JNv" firstAttribute="bottom" secondItem="G0q-OE-YU7" secondAttribute="top" id="trD-0I-IWX"/>
                             <constraint firstAttribute="trailing" secondItem="b6Z-pY-c6P" secondAttribute="trailing" id="uLA-fE-qY3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="VfJ-N6-OPz"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Star_000000_32" selectedImage="Star_000000_32" id="VfJ-N6-OPz"/>
                     <connections>
+                        <outlet property="navBar" destination="b6Z-pY-c6P" id="tLL-HO-kum"/>
                         <outlet property="tableView" destination="Bbb-pk-JNv" id="GQY-5Y-BFd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXE-z5-bIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="830"/>
+            <point key="canvasLocation" x="157.59999999999999" y="829.83508245877067"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Referee Jersey_000000_32" width="32" height="32"/>
+        <image name="Star_000000_32" width="32" height="32"/>
         <image name="bernese_mountaindog" width="2000" height="2000"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="TWc-hB-U79"/>
-    </inferredMetricsTieBreakers>
 </document>

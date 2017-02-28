@@ -59,10 +59,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func setupSegmentedControl(){
         
         
-        segmentedControl = HMSegmentedControl(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 75))
+        segmentedControl = HMSegmentedControl(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 70))
         segmentedControl.sectionTitles = ["ESPN", "TalkSport"]
+
         
-        segmentedControl.backgroundColor = .white
+        segmentedControl.backgroundColor = .black
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectionIndicatorLocation = .up
         segmentedControl.selectionStyle = .fullWidthStripe
@@ -70,12 +71,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         segmentedControl.selectedSegmentIndex = 0
         
         segmentedControl.titleTextAttributes = [
-            NSForegroundColorAttributeName : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1),
+            NSForegroundColorAttributeName : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
             NSFontAttributeName : UIFont.systemFont(ofSize: 17)
         ]
         
         segmentedControl.selectedTitleTextAttributes = [
-            NSForegroundColorAttributeName : #colorLiteral(red: 0.05439098924, green: 0.1344551742, blue: 0.1884709597, alpha: 1),
+            NSForegroundColorAttributeName : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
             NSFontAttributeName : UIFont.boldSystemFont(ofSize: 17)
         ]
         
@@ -161,16 +162,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let saveAction =  UITableViewRowAction(style: .default, title: "Tap to add to Favorites") { (action, indexPath) in
             print("Article added to favorites!")
-            
-            let newFavoriteArticle = FavoriteArticle(articleURL: (self.ESPNarticlesArray?[indexPath.row].URL)!, author: (self.ESPNarticlesArray?[indexPath.row].author), desc: (self.ESPNarticlesArray?[indexPath.row].desc)!, imageURL: (self.ESPNarticlesArray?[indexPath.row].imageURL)!, headline: (self.ESPNarticlesArray?[indexPath.row].headline)!, context: self.articleContext)
-            
+             if self.segmentedControl.selectedSegmentIndex == 0{
+            _ = FavoriteArticle(articleURL: (self.ESPNarticlesArray?[indexPath.row].URL)!, author: (self.ESPNarticlesArray?[indexPath.row].author), desc: (self.ESPNarticlesArray?[indexPath.row].desc)!, imageURL: (self.ESPNarticlesArray?[indexPath.row].imageURL)!, headline: (self.ESPNarticlesArray?[indexPath.row].headline)!, context: self.articleContext)
+             } else {
+                _ = FavoriteArticle(articleURL: (self.TSarticlesArray?[indexPath.row].URL)!, author: (self.TSarticlesArray?[indexPath.row].author), desc: (self.TSarticlesArray?[indexPath.row].desc)!, imageURL: (self.TSarticlesArray?[indexPath.row].imageURL)!, headline: (self.TSarticlesArray?[indexPath.row].headline)!, context: self.articleContext)
+            }
             do{
                 try self.delegate.stack.saveContext()
                 print("Saved Article!")
             }catch{
                 print("There was an error while saving context")
             }
-            
         }
         saveAction.backgroundColor = #colorLiteral(red: 0.42916254, green: 0.6046701975, blue: 1, alpha: 1)
         return[saveAction]

@@ -30,12 +30,21 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }()
  
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        navBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 70.0)
+        
+        navBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+            NSFontAttributeName : UIFont.systemFont(ofSize: 20)
+        ]
+    }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         do{
         try fetchedResultsController?.performFetch()
         }catch{
@@ -46,7 +55,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
         
     }
     
@@ -56,7 +65,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let article = fetchedResultsController!.object(at: indexPath) as! FavoriteArticle
+        let article = fetchedResultsController!.object(at: indexPath) 
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell") as! ArticleTableViewCell
         
@@ -70,6 +79,17 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "web") as! WebViewController
+        
+        let article = fetchedResultsController!.object(at: indexPath) 
+
+        
+        vc.articleURL = article.articleURL
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
     
