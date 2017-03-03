@@ -10,7 +10,7 @@ import UIKit
 import HMSegmentedControl
 import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPageViewControllerDelegate{
     
     
     var ESPNarticlesArray:[Article]? = []
@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var segmentedControl: HMSegmentedControl!
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pageView: UIView!
     
     override var prefersStatusBarHidden: Bool {
         get {
@@ -46,14 +47,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         })
         
-        
         NetworkingClient.sharedInstance.fetchArticles(url: NetworkingClient.sharedInstance.tsURL) { (data) in
             self.TSarticlesArray = data
-            
         }
+    }
+    
+    
+    
+    private func setupPageView(){
+        
+        let pageVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as! UIPageViewController
+        pageVC.delegate = self
+
+       // pageVC.setViewControllers(<#T##viewControllers: [UIViewController]?##[UIViewController]?#>, direction: <#T##UIPageViewControllerNavigationDirection#>, animated: <#T##Bool#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+        
         
         
     }
+    
+    
+    
+    
+    //MARK: - Segmented Control
     
     
     func setupSegmentedControl(){
@@ -96,7 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
    
-    // MARK: TABLE VIEW DELEGATE
+    // MARK: - TABLE VIEW DELEGATE
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentedControl.selectedSegmentIndex == 0{
@@ -123,6 +138,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.descriptionLabel.text = ESPNarticlesArray?[indexPath.row].desc
         if ESPNarticlesArray?[indexPath.row].imageURL != nil {
         cell.previewImageView.imageFromUrl(urlString: (ESPNarticlesArray?[indexPath.row].imageURL!)!)
+
         }
         return cell
         } else{

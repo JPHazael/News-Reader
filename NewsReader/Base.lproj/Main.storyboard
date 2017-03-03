@@ -25,6 +25,44 @@
             </objects>
             <point key="canvasLocation" x="-682" y="422"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="pio-GH-I3l">
+            <objects>
+                <pageViewController storyboardIdentifier="page" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="VAJ-cf-GYW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aqe-VW-llE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="-586"/>
+        </scene>
+        <!--Content View Controller-->
+        <scene sceneID="zJt-2H-upf">
+            <objects>
+                <viewController id="hsg-Dq-eKa" customClass="ContentViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JbG-6f-wCI"/>
+                        <viewControllerLayoutGuide type="bottom" id="crs-M5-WD4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lmA-Zb-pnd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iQ8-9r-CgQ"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iQ8-9r-CgQ" firstAttribute="leading" secondItem="lmA-Zb-pnd" secondAttribute="leading" id="9Hf-lW-feI"/>
+                            <constraint firstAttribute="trailing" secondItem="iQ8-9r-CgQ" secondAttribute="trailing" id="KKi-0e-Iym"/>
+                            <constraint firstItem="crs-M5-WD4" firstAttribute="top" secondItem="iQ8-9r-CgQ" secondAttribute="bottom" constant="363" id="Ksg-7E-XCN"/>
+                            <constraint firstItem="iQ8-9r-CgQ" firstAttribute="top" secondItem="JbG-6f-wCI" secondAttribute="bottom" constant="45" id="ZJl-7E-4wN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="iQ8-9r-CgQ" id="6lY-Wp-GwN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7a6-W1-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="-603"/>
+        </scene>
         <!--Sports Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -40,7 +78,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="200" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="maL-ma-FXr">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="595" id="Jcd-Ie-aUW"/>
+                                    <constraint firstAttribute="height" constant="304" id="Jcd-Ie-aUW"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" rowHeight="189" id="b0a-is-0US" customClass="ArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
@@ -106,16 +144,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="uFi-G7-3CL"/>
                                 </connections>
                             </tableView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-7k-AYe">
+                                <connections>
+                                    <segue destination="VAJ-cf-GYW" kind="embed" id="PAn-UM-AYF"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="maL-ma-FXr" secondAttribute="trailing" id="6Rx-r9-K36"/>
+                            <constraint firstItem="EvV-7k-AYe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="IfK-n9-fKQ"/>
                             <constraint firstItem="maL-ma-FXr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LgT-50-A63"/>
+                            <constraint firstItem="EvV-7k-AYe" firstAttribute="trailing" secondItem="maL-ma-FXr" secondAttribute="trailing" id="Oiy-NS-fPH"/>
                             <constraint firstItem="maL-ma-FXr" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Z35-yo-yyT"/>
+                            <constraint firstItem="EvV-7k-AYe" firstAttribute="leading" secondItem="maL-ma-FXr" secondAttribute="leading" id="ZrD-X3-VuQ"/>
+                            <constraint firstItem="maL-ma-FXr" firstAttribute="top" secondItem="EvV-7k-AYe" secondAttribute="bottom" constant="10" id="d7m-Mm-887"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sports Page" image="Referee Jersey_000000_32" selectedImage="Referee Jersey_000000_32" id="x2x-1v-Eb0"/>
                     <navigationItem key="navigationItem" id="SSc-gL-lKl"/>
                     <connections>
+                        <outlet property="pageView" destination="EvV-7k-AYe" id="80G-eI-OKg"/>
                         <outlet property="tableView" destination="maL-ma-FXr" id="a2c-Se-Ac1"/>
                     </connections>
                 </viewController>

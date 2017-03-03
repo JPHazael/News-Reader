@@ -21,7 +21,9 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     lazy var fetchedResultsController: NSFetchedResultsController<FavoriteArticle>? = {
         let fetchRequest = NSFetchRequest<FavoriteArticle>(entityName: "FavoriteArticle")
         //fetchRequest.predicate = NSPredicate(format: "FavoriteArticle == %@", self.favorite)
-        fetchRequest.sortDescriptors = []
+        
+        let sortDiscriptor = NSSortDescriptor(key: "headline", ascending: true)
+        fetchRequest.sortDescriptors = [sortDiscriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: self.articleContext,
                                                                   sectionNameKeyPath: nil,
