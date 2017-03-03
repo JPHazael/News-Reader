@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageView: UIView!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override var prefersStatusBarHidden: Bool {
         get {
             return true
@@ -37,7 +37,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         
     
-        
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         self.setupSegmentedControl()
         
         NetworkingClient.sharedInstance.fetchArticles(url: NetworkingClient.sharedInstance.espnURL, completion:{ (data) in
@@ -55,6 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             // Put your code which should be executed with a delay here
             self.setupPageView()
+            self.activityIndicator.stopAnimating()
         })
         
     }
@@ -86,6 +88,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let contentVC = self.storyboard?.instantiateViewController(withIdentifier: "content") as! ContentViewController
         contentVC.imageName = ContentViewController.sharedInstance.espnImagesArray[index]
+
         contentVC.pageIndex = index
         
         return contentVC

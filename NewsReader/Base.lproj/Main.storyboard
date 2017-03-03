@@ -46,22 +46,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iQ8-9r-CgQ"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ti4-dI-WVz">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iQ8-9r-CgQ" firstAttribute="leading" secondItem="lmA-Zb-pnd" secondAttribute="leading" id="9Hf-lW-feI"/>
+                            <constraint firstItem="ti4-dI-WVz" firstAttribute="bottom" secondItem="iQ8-9r-CgQ" secondAttribute="bottom" id="GNY-sh-aF4"/>
                             <constraint firstAttribute="trailing" secondItem="iQ8-9r-CgQ" secondAttribute="trailing" id="KKi-0e-Iym"/>
                             <constraint firstItem="crs-M5-WD4" firstAttribute="top" secondItem="iQ8-9r-CgQ" secondAttribute="bottom" constant="363" id="Ksg-7E-XCN"/>
+                            <constraint firstItem="ti4-dI-WVz" firstAttribute="centerX" secondItem="iQ8-9r-CgQ" secondAttribute="centerX" id="MSe-3x-ONc"/>
                             <constraint firstItem="iQ8-9r-CgQ" firstAttribute="top" secondItem="JbG-6f-wCI" secondAttribute="bottom" constant="45" id="ZJl-7E-4wN"/>
+                            <constraint firstItem="ti4-dI-WVz" firstAttribute="leading" secondItem="lmA-Zb-pnd" secondAttribute="leadingMargin" id="mDc-Mp-3O4"/>
+                            <constraint firstItem="ti4-dI-WVz" firstAttribute="top" secondItem="JbG-6f-wCI" secondAttribute="bottom" constant="196" id="tVN-Uc-9Si"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentImageView" destination="iQ8-9r-CgQ" id="6lY-Wp-GwN"/>
+                        <outlet property="headlineLabel" destination="ti4-dI-WVz" id="qrT-bI-kYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7a6-W1-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="-603"/>
+            <point key="canvasLocation" x="868" y="-603.14842578710648"/>
         </scene>
         <!--Sports Page-->
         <scene sceneID="tne-QT-ifu">
@@ -149,6 +159,10 @@
                                     <segue destination="VAJ-cf-GYW" kind="embed" id="PAn-UM-AYF"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MXn-6g-g8M">
+                                <frame key="frameInset" minX="164" minY="166" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="maL-ma-FXr" secondAttribute="trailing" id="6Rx-r9-K36"/>
@@ -163,6 +177,7 @@
                     <tabBarItem key="tabBarItem" title="Sports Page" image="Referee Jersey_000000_32" selectedImage="Referee Jersey_000000_32" id="x2x-1v-Eb0"/>
                     <navigationItem key="navigationItem" id="SSc-gL-lKl"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="MXn-6g-g8M" id="r4s-R4-giU"/>
                         <outlet property="pageView" destination="EvV-7k-AYe" id="80G-eI-OKg"/>
                         <outlet property="tableView" destination="maL-ma-FXr" id="a2c-Se-Ac1"/>
                     </connections>

@@ -14,13 +14,16 @@ class ContentViewController: UIViewController {
     
     
     
+    @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var contentImageView: UIImageView!
     
     var espnImagesArray = [String]()
+    var espnHeadlinesArray = [String]()
     var tsImagesArray = [String]()
     
     var pageIndex = 0
     var imageName: String?
+    var headlines: String?
 
     
     
