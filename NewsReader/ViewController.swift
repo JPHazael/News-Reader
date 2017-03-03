@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var ESPNarticlesArray:[Article]? = []
     var TSarticlesArray:[Article]? = []
     var segmentedControl: HMSegmentedControl!
+    var pageViewController: UIPageViewController?
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pageView: UIView!
@@ -50,19 +51,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         NetworkingClient.sharedInstance.fetchArticles(url: NetworkingClient.sharedInstance.tsURL) { (data) in
             self.TSarticlesArray = data
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            // Put your code which should be executed with a delay here
+            self.setupPageView()
+        })
+        
     }
     
     
     
     private func setupPageView(){
         
-        let pageVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "page") as! UIPageViewController
+        let pageVC = self.storyboard?.instantiateViewController(withIdentifier: "page") as! UIPageViewController
         pageVC.delegate = self
+        pageVC.dataSource = self
 
-       // pageVC.setViewControllers(<#T##viewControllers: [UIViewController]?##[UIViewController]?#>, direction: <#T##UIPageViewControllerNavigationDirection#>, animated: <#T##Bool#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+        let firstController = self.getViewControl(atIndex: 0)
+        
+        pageVC.setViewControllers([firstController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         
         
         
+        self.pageViewController = pageVC
+        self.addChildViewController(self.pageViewController!)
+        self.pageView.addSubview(self.pageViewController!.view)
+        self.pageViewController?.didMove(toParentViewController: self)
+        
+        
+        
+    }
+    
+    fileprivate func getViewControl(atIndex index: Int)-> ContentViewController{
+        
+        let contentVC = self.storyboard?.instantiateViewController(withIdentifier: "content") as! ContentViewController
+        contentVC.imageName = ContentViewController.sharedInstance.espnImagesArray[index]
+        contentVC.pageIndex = index
+        
+        return contentVC
+
     }
     
     
@@ -197,14 +224,48 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 }
 
 
-extension String{
-    func fixESPNTag()-> String{
-        var newWord = self
-        newWord = newWord.replacingOccurrences(of: "ESPN", with: " ESPN")
+// MARK: - page view controller data source
+
+extension ViewController:UIPageViewControllerDataSource{
+    
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        let pageContentVC = viewController as! ContentViewController
         
-        return newWord
+        var index = pageContentVC.pageIndex
+        
+        if index == 0 || index == NSNotFound{
+            return getViewControl(atIndex: ContentViewController.sharedInstance.espnImagesArray.count - 1)
+        }
+        
+        index -= 1
+        return getViewControl(atIndex: index)
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        let pageContentVC = viewController as! ContentViewController
+        
+        var index = pageContentVC.pageIndex
+        
+        if index == NSNotFound{
+            return nil
+        }
+        
+        index += 1
+        
+        if index == ContentViewController.sharedInstance.espnImagesArray.count{
+            return getViewControl(atIndex: 0)
+        }
+        return getViewControl(atIndex: index)
+    }
+    
+    
+    
 }
+
+
+
 
 
 extension UIImageView{

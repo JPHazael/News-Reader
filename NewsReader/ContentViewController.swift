@@ -18,6 +18,9 @@ class ContentViewController: UIViewController {
     
     var espnImagesArray = [String]()
     var tsImagesArray = [String]()
+    
+    var pageIndex = 0
+    var imageName: String?
 
     
     
@@ -27,7 +30,11 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.contentImageView.imageFromUrl(urlString: espnImagesArray[1])
+        if let currentImage = imageName{
+        
+        self.contentImageView.imageFromUrl(urlString: currentImage)
+        
+        }
 
     }
 

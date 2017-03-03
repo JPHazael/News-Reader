@@ -28,7 +28,7 @@
         <!--Page View Controller-->
         <scene sceneID="pio-GH-I3l">
             <objects>
-                <pageViewController storyboardIdentifier="page" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="VAJ-cf-GYW" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="page" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VAJ-cf-GYW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aqe-VW-llE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="87" y="-586"/>
@@ -36,7 +36,7 @@
         <!--Content View Controller-->
         <scene sceneID="zJt-2H-upf">
             <objects>
-                <viewController id="hsg-Dq-eKa" customClass="ContentViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="content" id="hsg-Dq-eKa" customClass="ContentViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JbG-6f-wCI"/>
                         <viewControllerLayoutGuide type="bottom" id="crs-M5-WD4"/>
@@ -144,7 +144,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="uFi-G7-3CL"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-7k-AYe">
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-7k-AYe">
                                 <connections>
                                     <segue destination="VAJ-cf-GYW" kind="embed" id="PAn-UM-AYF"/>
                                 </connections>
