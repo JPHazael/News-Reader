@@ -36,6 +36,7 @@ class ContentViewController: UIViewController {
         if let currentImage = imageName{
         
         self.contentImageView.imageFromUrl(urlString: currentImage)
+        self.headlineLabel.text = "Welcome to SportsPage."
         
         }
 

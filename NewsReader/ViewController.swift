@@ -56,6 +56,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             // Put your code which should be executed with a delay here
             self.setupPageView()
+            print(ContentViewController.sharedInstance.espnHeadlinesArray[0])
+
             self.activityIndicator.stopAnimating()
         })
         
@@ -88,6 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let contentVC = self.storyboard?.instantiateViewController(withIdentifier: "content") as! ContentViewController
         contentVC.imageName = ContentViewController.sharedInstance.espnImagesArray[index]
+        //contentVC.headlineLabel.text = contentVC.espnHeadlinesArray[0]
 
         contentVC.pageIndex = index
         
@@ -269,7 +272,7 @@ extension ViewController:UIPageViewControllerDataSource{
 
 
 
-
+// MARK: - UIIMAGEVIEW EXTENSION 
 
 extension UIImageView{
     
