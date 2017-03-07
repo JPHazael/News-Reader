@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             // Put your code which should be executed with a delay here
-            self.setupPageView()
+            self.setupPageView(array: ContentViewController.sharedInstance.espnImagesArray)
             print(ContentViewController.sharedInstance.espnHeadlinesArray[0])
 
             self.activityIndicator.stopAnimating()
@@ -65,13 +65,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-    private func setupPageView(){
+    private func setupPageView(array: [String]){
         
         let pageVC = self.storyboard?.instantiateViewController(withIdentifier: "page") as! UIPageViewController
         pageVC.delegate = self
         pageVC.dataSource = self
 
-        let firstController = self.getViewControl(atIndex: 0)
+        let firstController = self.getViewControl(atIndex: 0, arry: array)
         
         pageVC.setViewControllers([firstController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         
@@ -86,10 +86,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    fileprivate func getViewControl(atIndex index: Int)-> ContentViewController{
+    fileprivate func getViewControl(atIndex index: Int, arry: [String])-> ContentViewController{
         
         let contentVC = self.storyboard?.instantiateViewController(withIdentifier: "content") as! ContentViewController
-        contentVC.imageName = ContentViewController.sharedInstance.espnImagesArray[index]
+        contentVC.imageName = arry[index]
+            //ContentViewController.sharedInstance.espnImagesArray[index]
         //contentVC.headlineLabel.text = contentVC.espnHeadlinesArray[0]
 
         contentVC.pageIndex = index
@@ -138,7 +139,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segmentedControl?.selectedSegmentIndex == 0{
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.reloadData()
+
         } else{
+            self.setupPageView(array: ContentViewController.sharedInstance.tsImagesArray)
             self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
             self.tableView.reloadData()
         }
@@ -241,11 +244,11 @@ extension ViewController:UIPageViewControllerDataSource{
         var index = pageContentVC.pageIndex
         
         if index == 0 || index == NSNotFound{
-            return getViewControl(atIndex: ContentViewController.sharedInstance.espnImagesArray.count - 1)
+            return getViewControl(atIndex: ContentViewController.sharedInstance.espnImagesArray.count - 1, arry: ContentViewController.sharedInstance.espnImagesArray)
         }
         
         index -= 1
-        return getViewControl(atIndex: index)
+        return getViewControl(atIndex: index, arry: ContentViewController.sharedInstance.espnImagesArray)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -261,9 +264,9 @@ extension ViewController:UIPageViewControllerDataSource{
         index += 1
         
         if index == ContentViewController.sharedInstance.espnImagesArray.count{
-            return getViewControl(atIndex: 0)
+            return getViewControl(atIndex: 0, arry: ContentViewController.sharedInstance.espnImagesArray)
         }
-        return getViewControl(atIndex: index)
+        return getViewControl(atIndex: index, arry: ContentViewController.sharedInstance.espnImagesArray)
     }
     
     

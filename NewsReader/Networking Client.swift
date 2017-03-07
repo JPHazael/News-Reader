@@ -46,8 +46,14 @@ class NetworkingClient: NSObject{
                             article.URL = articleFromData["url"]! as? String
                             article.imageURL = articleFromData["urlToImage"]! as? String
                         
+                        print(articleFromData)
+                        
                         if url == self.espnURL{
-                            ContentViewController.sharedInstance.espnImagesArray.append((articleFromData["urlToImage"]! as? String)!)
+                            if let imageLink =  articleFromData["urlToImage"] as? String{
+                            ContentViewController.sharedInstance.espnImagesArray.append(imageLink)
+                                
+                                //((articleFromData["urlToImage"]! as? String)!)
+                            }
                             ContentViewController.sharedInstance.espnHeadlinesArray.append((articleFromData["title"]! as? String)!)
                         } else if url == self.tsURL{
                             ContentViewController.sharedInstance.tsImagesArray.append((articleFromData["urlToImage"]! as? String)!)
